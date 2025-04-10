@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MCP 대화 시뮬레이터</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+  <h2>MCP 기반 Claude & GPT 대화(디버그+)</h2>
+  <form id="chatForm">
+    <div class="row">
+      <div class="col">
+        <label for="claude_role">Claude 역할:</label>
+        <textarea id="claude_role" name="claude_role">감성적인 시인이야</textarea>
+      </div>
+      <div class="col">
+        <label for="gpt_role">GPT 역할:</label>
+        <textarea id="gpt_role" name="gpt_role">논리적인 공학자야</textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-75">
+        <label for="start_message">초기 메시지:</label>
+        <textarea id="start_message" name="start_message">AI가 어떤 직업부터 대체해?</textarea>
+      </div>
+      <div class="col-25">
+        <button type="submit">대화 시작</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="chat-debug-wrapper">
+    <div id="chatContainer"></div>
+    <div id="debugPanel"><strong>📜 디버그 로그</strong><pre id="debugContent"></pre></div>
+  </div>
+</body>
+</html>

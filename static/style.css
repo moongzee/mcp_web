@@ -1,0 +1,86 @@
+body {
+  background-color: #f9f9f9;
+  font-family: sans-serif;
+  margin: 20px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: flex-end;
+}
+
+.col, .col-75, .col-25 {
+  padding: 5px;
+}
+
+.col {
+  flex: 1;
+}
+
+.col-75 {
+  flex: 3;
+}
+
+.col-25 {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* 👉 버튼을 오른쪽으로 정렬 */
+}
+
+textarea, input {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.chat-debug-wrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#chatContainer, #debugPanel {
+  flex: 1; /* 👉 좌우 반반 차지 */
+  height: 600px;
+  padding: 10px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+#chatContainer {
+  background-color: #e8f0ff;
+  font-size: 13px; /* 👉 채팅창 글씨 작게 */
+}
+
+#debugPanel {
+  background: #fffbe6;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
+/* 채팅 말풍선 스타일 */
+.bubble {
+  background-color: #fff;
+  margin: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 70%;
+}
+
+.friend {
+  background: #fff;
+  align-self: flex-start;
+}
+
+.me {
+  background: #ffeb33;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.loading img {
+  opacity: 0.7;
+}
