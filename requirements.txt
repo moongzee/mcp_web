@@ -4,3 +4,4 @@ openai==0.28.1
 anthropic==0.18.1
 gunicorn==21.2.0
 httpx==0.24.1
+python-dotenv
