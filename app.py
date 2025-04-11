@@ -11,7 +11,7 @@ load_dotenv()
 #client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), http_client=None)
 #구버전
 openai.api_key = os.getenv("OPENAI_API_KEY")
-anthropic_client = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
+anthropic_client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 app = Flask(__name__)
 
@@ -41,14 +41,13 @@ class MCPAgent:
             for sp, msg in self.context:
                 prompt += f"{sp}: {msg}\n"
             prompt += f"User: {input_message}"
-            response =  anthropic_client.completions.create(
-                        prompt=f"\n\nHuman: {prompt}\n\nAssistant:",
-                        stop_sequences=["\n\nHuman:"],
-                        model="claude-1",  # 또는 "claude-instant-1"
-                        max_tokens_to_sample=500,
-                        temperature=0.7
-                        )
-            reply = response["completion"].strip()
+            response = anthropic_client.messages.create(
+                model="claude-3-haiku-20240307",
+                max_tokens=500,
+                temperature=0.7,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            reply = response.content[0].text.strip()
         else:
             messages = [{"role": "system", "content": self.role}]
             for sp, msg in self.context:
