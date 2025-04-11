@@ -11,7 +11,7 @@ load_dotenv()
 #client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), http_client=None)
 #구버전
 openai.api_key = os.getenv("OPENAI_API_KEY")
-anthropic_client = Anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+anthropic_client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 app = Flask(__name__)
 
