@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, jsonify
 from dotenv import load_dotenv
 #from openai import OpenAI
 import openai
-from anthropic import Anthropic
+import anthropic
 
 load_dotenv()
 
@@ -11,7 +11,7 @@ load_dotenv()
 #client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), http_client=None)
 #구버전
 openai.api_key = os.getenv("OPENAI_API_KEY")
-anthropic_client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+anthropic_client = anthropic.Client(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 app = Flask(__name__)
 
@@ -41,7 +41,7 @@ class MCPAgent:
             for sp, msg in self.context:
                 prompt += f"{sp}: {msg}\n"
             prompt += f"User: {input_message}"
-            response =  anthropic_client.completions.create(
+            response =  anthropic_client.completion(
                         prompt=f"\n\nHuman: {prompt}\n\nAssistant:",
                         stop_sequences=["\n\nHuman:"],
                         model="claude-1",  # 또는 "claude-instant-1"
