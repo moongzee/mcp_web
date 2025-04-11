@@ -41,7 +41,7 @@ class MCPAgent:
             for sp, msg in self.context:
                 prompt += f"{sp}: {msg}\n"
             prompt += f"User: {input_message}"
-            response =  anthropic.Completion.create(
+            response =  anthropic.completions.create(
                         prompt=f"\n\nHuman: {prompt}\n\nAssistant:",
                         stop_sequences=["\n\nHuman:"],
                         model="claude-1",  # 또는 "claude-instant-1"
